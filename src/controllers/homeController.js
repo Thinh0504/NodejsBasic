@@ -1,4 +1,5 @@
 import pool from "../configs/connectDB.js";
+import multer from "multer";
 
 let getHomePage = async(req, res) => {
     const [row, fields] = await pool.execute("Select * from users");
@@ -39,6 +40,38 @@ let postUpdateUser = async(req, res) => {
     return res.redirect("/");
 };
 
+let getUploadFilePage = async(req, res) => {
+    return res.render("upload.ejs");
+};
+
+//
+let handleUploadFile = async(req, res) => {
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    } else if (!req.file) {
+        return res.send("Please select an image to upload");
+    }
+    res.send(
+        `You have uploaded this image: <hr/><img src="/image/${req.file.filename}" width="500"><hr /><a href="/upload">Upload another image</a>`
+    );
+};
+
+let handleUploadMultipleFile = async(req, res) => {
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    } else if (!req.files) {
+        return res.send("Please select an image to upload");
+    }
+    let result = "You have upload there files: <hr />";
+    const files = req.files;
+    let index, len;
+
+    for (index = 0, len = files.length; index < len; ++index) {
+        result += `<img src ="/image/${files[index].filename}" width="300" style ="margin-right:20px"; /><a href="/upload">Upload another image</a>`;
+    }
+    res.send(result);
+};
+
 module.exports = {
     getHomePage,
     getDetailPage,
@@ -46,4 +79,7 @@ module.exports = {
     deleteUser,
     getEditPage,
     postUpdateUser,
+    getUploadFilePage,
+    handleUploadFile,
+    handleUploadMultipleFile,
 };

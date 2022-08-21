@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/upload" class="active">Upload</a>
+    </div>
+
+    <div class="upload-file-container">
+        <div>
+            <h1>UploadFile usings Express.js and Multer</h1>
+            <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
+                <div>
+                    <h3>Upload single file:</h3>
+                    <div>
+                        <span>Upload your profile picture:</span>
+                        <input type="file" name="name" />
+                    </div>
+                </div>
+
+
+                <div>
+                    <button class="btn-save" type="submit">Upload</button>
+                </div>
+            </form>
+        </div>
+
+        <hr />
+
+        <div>
+            <form method="POST" action="/upload-multiple-images" enctype="multipart/form-data">
+                <div>
+                    <h3>Upload multiple file:</h3>
+                    <div>
+                        <span>Upload your multiple picture:</span>
+                        <input type="file" name="name1" multiple />
+                    </div>
+
+                </div>
+
+                <div>
+                    <button class="btn-save" type="submit">Save files</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

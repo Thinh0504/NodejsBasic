@@ -11,10 +11,8 @@
 <body>
 
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/">Home</a>
+        <a href="/upload">Upload</a>
     </div>
 
     <div style="padding-left:16px">
@@ -38,8 +36,12 @@
                         <td>
                             <%= dataUser[i].lastName %>
                         </td>
-                        <td>
-                            <button type="button"> <a href="/detail/user/<%= dataUser[i].id %>" target="_blank">Detail</a></button>
+                        <td style="display:flex; gap: 15px">
+                            <form>
+                                <button class="btn-detail">
+                                    <a href="/detail/user/<%= dataUser[i].id %>" target="_blank">Detail</a>
+                            </button>
+                            </form>
                             <form action="/delete-user" method="POST">
                                 <input type="text" hidden value="<%= dataUser[i].id %>" name="userId" />
                                 <button type="submit">Delete</button>

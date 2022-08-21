@@ -70,3 +70,19 @@ tr:hover {
     margin-top: 20px;
     cursor: pointer;
 }
+
+.upload-file-container {
+    padding: 15px;
+}
+
+.upload-file-container label {
+    display: block;
+}
+
+.upload-file-container h1 {
+    margin-top: 15px;
+}
+
+hr {
+    border-top: 3px solid #eee !important;
+}
